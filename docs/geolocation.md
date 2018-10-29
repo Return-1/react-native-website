@@ -83,7 +83,10 @@ Supported options:
 ```javascript
 geolocation.requestAuthorization();
 ```
+Request suitable Location permission.
+Note: Does not return a promise or a callback, if you need more fine grained control over permissions you'll need something else.
 
+-On iOS
 Request suitable Location permission based on the key configured on pList. If NSLocationAlwaysUsageDescription is set, it will request Always authorization, although if NSLocationWhenInUseUsageDescription is set, it will request InUse authorization.
 
 ---
@@ -94,7 +97,7 @@ Request suitable Location permission based on the key configured on pList. If NS
 geolocation.getCurrentPosition(geo_success, [geo_error], [geo_options]);
 ```
 
-Invokes the success callback once with the latest location info.
+Invokes the success callback once with the latest location info. If no permission is granted, this will also invoke a permission request dialogue and the callback will be called when user input is provided.
 
 **Parameters:**
 
